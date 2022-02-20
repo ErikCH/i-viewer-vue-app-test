@@ -1,11 +1,9 @@
-import type { App } from "vue";
-import { SpecialUploader } from "./components";
+import { defineCustomElement } from "vue";
+import VueSpecialUploader from "./components/special-uploader.ce.vue";
 
-export default {
-  install: (app: App, options: { img: string } = { img: "" }) => {
-    app.component("SpecialUploader", SpecialUploader);
-    app.provide("specialUploadImage", options.img);
-  },
-};
+export const SpecialUploader = defineCustomElement(VueSpecialUploader);
 
-export { SpecialUploader };
+// Optional: Provide an easy way to register the custom element.
+export function register(tagName = "special-uploader") {
+  customElements.define(tagName, SpecialUploader);
+}

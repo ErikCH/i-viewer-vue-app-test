@@ -1,13 +1,12 @@
 <script lang="ts" setup>
-import { ref, inject } from "vue";
+import { ref } from "vue";
+import MyCustomText from "./my-custom-text.vue";
 
 const props = defineProps<{
   customImg?: string;
 }>();
 
-const img = inject("specialUploadImage") as string;
-
-const imgVal = props.customImg ?? img;
+const imgVal = props.customImg ?? "";
 const imgSRC = ref(imgVal);
 function fileUpload(event: Event) {
   const target = event.target as HTMLInputElement;
@@ -27,7 +26,7 @@ function fileProcess(file: File) {
 
 <template>
   <div class="image-uploader">
-    <h1>File Uploader</h1>
+    <my-custom-text :customText="'File Uploader'"></my-custom-text>
     <input
       @change="fileUpload"
       type="file"
@@ -48,10 +47,13 @@ function fileProcess(file: File) {
   align-items: center;
   border: 1px solid gray;
   width: 55%;
-  background-color: eggshell;
+  background-color: seashell;
   margin: 0 auto;
-  height: 300px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+h3 {
+  font-size: 3rem;
+  color: green;
 }
 
 .your-file {
