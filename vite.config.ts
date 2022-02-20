@@ -15,7 +15,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: "./src/ViewerPlugin.ts",
+      entry: "./src/ViewerPlugin.js",
       formats: ["es", "cjs"],
       name: "ViwerPlugin",
       fileName: (format) => (format === "es" ? "index.js" : "index.cjs"),
